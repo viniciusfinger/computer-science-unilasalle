@@ -1,0 +1,1 @@
+print("sua idade eh "+ input("Insira sua idade: ") + " anos")
