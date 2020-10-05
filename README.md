@@ -1,2 +1,2 @@
-# CadeiraAlgoritmosProgramacao
-Cadeira de Algoritmos e Programação 2020/2
+# 🎓Algoritmos e códigos desenvolvidos durante a faculdade de Ciência da Computação
+ 
