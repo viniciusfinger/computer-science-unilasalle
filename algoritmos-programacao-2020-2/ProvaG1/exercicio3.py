@@ -8,7 +8,7 @@ def encerraPrograma():
     exit()
 
 def printLn():
-    print("|-------------------------------------------------|")
+    print("|" + ("-"*49) + "|")
 
 
 try:
