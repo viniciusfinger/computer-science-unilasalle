@@ -44,7 +44,7 @@ def printaLinha():
 i = 0
 cidades = []
 
-while i < 3:
+while i < 5:
     cidade = {
         "nome": "",
         "habitantes": 0,
