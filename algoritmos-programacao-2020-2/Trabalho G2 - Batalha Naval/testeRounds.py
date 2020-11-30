@@ -5,14 +5,10 @@ linhas = 5
 colunas = 5
 pontos = [0, 0, 0]
 jogadorAtual = 0
-arrayRodadas = [0]
-
+numeroJogadores = [0,1]
 
 def iniciaJogo():
     matrizes = iniciaMatrizes()
-    setQtdJogadores()
-
-    print('\033[32m' + 'Iniciando Jogo...' + '\033[0;0m')
 
     while not verificaSeAcabouOJogo(matrizes[0]):
         validaJogador()
@@ -22,27 +18,19 @@ def iniciaJogo():
 
     validaGanhador(pontos)
 
-
-def setQtdJogadores():
-    global arrayRodadas
-    while True:
-        qtdJogadores = int(input("Insira a quantidade de jogadores: "))
-        if qtdJogadores in (1,2,3):
-            break
-        else:
-            print("Somente de 1 a 3 jogadores.")
-
+def setQuantidadeJogadores():
+    global numeroJogadores
+    qtdJogadores = int(input("Insira a quantidade de jogadores: "))
     if qtdJogadores == 1:
-        arrayRodadas = [0]
+        numeroJogadores = [0]
     if qtdJogadores == 2:
-        arrayRodadas = [0, 1]
+        numeroJogadores = [0,1]
     if qtdJogadores == 3:
-        arrayRodadas = [1, 2]
-
+        numeroJogadores = [1,2]
 
 def validaJogador():
     global jogadorAtual
-    if jogadorAtual in arrayRodadas:
+    if jogadorAtual in numeroJogadores:
         jogadorAtual += 1
     else:
         jogadorAtual = 1
@@ -159,29 +147,17 @@ def verificaSeAcabouOJogo(matriz):
 
 def realizaJogada(matrizes, jogadorAtual):
     global pontos
-    while True:
-        linha = int(input("Insira a linha: "))
-        if linha in (0,1,2,3,4):
-            break
-        else:
-            print("Somente números de 0 a 4")
-
-    while True:
-        coluna = int(input("Insira a coluna: "))
-        if coluna in (0,1,2,3,4):
-            break
-        else:
-            print("Somente números de 0 a 4")
-
-    print('-' * 40)
+    linha = int(input("Insira a linha: "))
+    coluna = int(input("Insira a coluna: "))
+    print('*' * 40)
 
     valorPosicao = matrizes[0][linha][coluna]
     if valorPosicao == 0:
         matrizes[1][linha][coluna] = 'A'
-        print("Seu tiro pegou na água.")
+        print("Seu tiro não acertou nada.")
 
     if valorPosicao == 1:
-        pontos[jogadorAtual - 1] += valorPosicao
+        pontos[jogadorAtual] += valorPosicao
         matrizes[0][linha][coluna] = 0
         matrizes[1][linha][coluna] = 'N'
         print('\033[32m' + 'Você acertou um navio inimigo.' + '\033[0;0m')
@@ -207,15 +183,13 @@ def realizaJogada(matrizes, jogadorAtual):
         matrizes[1][linha][coluna] = 'O'
         print('\033[31m' + 'Oh não! Você acertou a ONU, -5 pontos.' + '\033[0;0m')
 
-    print('-' * 40)
+    print('*' * 40)
     return matrizes
 
 
 def printaPontuacao(jogadorAtual):
-    if pontos[jogadorAtual - 1] >= 0:
-        print('\033[32m' + f"Turno do jogador {jogadorAtual}         Pontuação: {pontos[jogadorAtual - 1]}" + '\033[0;0m')
-    else:
-        print('\033[31m' + f"Turno do jogador {jogadorAtual}         Pontuação: {pontos[jogadorAtual - 1]}" + '\033[0;0m')
+    print('\033[32m' + f"Turno do jogador {jogadorAtual}         Pontuação: {pontos[jogadorAtual - 1]}" + '\033[0;0m')
+
 
 def validaGanhador(pontos):
     ganhador = 'Empate'
@@ -237,5 +211,6 @@ def validaGanhador(pontos):
         print("Fim de jogo. Houve um empate.")
 
     else:
-        print('\033[32m' + f"Fim de jogo. O ganhador foi o {ganhador}" + '\033[0;0m')
+        print(f"Fim de jogo. O ganhador foi o {ganhador}")
 
+iniciaJogo()
