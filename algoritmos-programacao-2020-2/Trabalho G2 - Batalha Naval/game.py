@@ -27,7 +27,7 @@ def setQtdJogadores():
     global arrayRodadas
     while True:
         qtdJogadores = int(input("Insira a quantidade de jogadores: "))
-        if qtdJogadores in (1,2,3):
+        if qtdJogadores in (1, 2, 3):
             break
         else:
             print("Somente de 1 a 3 jogadores.")
@@ -161,14 +161,14 @@ def realizaJogada(matrizes, jogadorAtual):
     global pontos
     while True:
         linha = int(input("Insira a linha: "))
-        if linha in (0,1,2,3,4):
+        if linha in (0, 1, 2, 3, 4):
             break
         else:
             print("Somente números de 0 a 4")
 
     while True:
         coluna = int(input("Insira a coluna: "))
-        if coluna in (0,1,2,3,4):
+        if coluna in (0, 1, 2, 3, 4):
             break
         else:
             print("Somente números de 0 a 4")
@@ -213,9 +213,12 @@ def realizaJogada(matrizes, jogadorAtual):
 
 def printaPontuacao(jogadorAtual):
     if pontos[jogadorAtual - 1] >= 0:
-        print('\033[32m' + f"Turno do jogador {jogadorAtual}         Pontuação: {pontos[jogadorAtual - 1]}" + '\033[0;0m')
+        print(
+            '\033[32m' + f"Turno do jogador {jogadorAtual}         Pontuação: {pontos[jogadorAtual - 1]}" + '\033[0;0m')
     else:
-        print('\033[31m' + f"Turno do jogador {jogadorAtual}         Pontuação: {pontos[jogadorAtual - 1]}" + '\033[0;0m')
+        print(
+            '\033[31m' + f"Turno do jogador {jogadorAtual}         Pontuação: {pontos[jogadorAtual - 1]}" + '\033[0;0m')
+
 
 def validaGanhador(pontos):
     ganhador = 'Empate'
@@ -238,4 +241,3 @@ def validaGanhador(pontos):
 
     else:
         print('\033[32m' + f"Fim de jogo. O ganhador foi o {ganhador}" + '\033[0;0m')
-
