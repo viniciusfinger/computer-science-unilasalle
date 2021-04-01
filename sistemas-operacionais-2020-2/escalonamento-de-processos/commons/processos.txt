@@ -1,4 +1,0 @@
-processo1 10 3
-processo2 40 5
-processo3 12 2
-processo4 5 1
