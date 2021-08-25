@@ -4,7 +4,6 @@ from Editora import Editora
 editoraTest = Editora(1, "Editora Test", "Vinicius", "983043447")
 editoraSegunda = Editora(2, "Editora Segunda", "André", "999999999")
 
-
 livroConto = Livro(1, "Um conto de terror baseado em fatos reais", 1342423, editoraTest)
 livroTecnico = Livro(2, "Arquitetura Limpa: uma introdução a arquitetura de software", 109444, editoraSegunda)
 
