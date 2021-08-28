@@ -16,3 +16,4 @@ print("Livro técnico:")
 print("Id: {}, Código ISBN: {}, Editora: {}, Descrição: {}".format(livroTecnico.codigo, livroTecnico.codigoISBN, livroTecnico.editora.razaoSocial, livroTecnico.descricao))
 print("Contato {}(Cód.: {}):".format(livroTecnico.editora.razaoSocial, livroTecnico.editora.codigo))
 print("Responsável: {}, Fone: {}".format(livroTecnico.editora.nomeContato, livroTecnico.editora.telefone))
+
