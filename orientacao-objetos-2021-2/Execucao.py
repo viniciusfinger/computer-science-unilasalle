@@ -6,6 +6,9 @@ import os
 def limpaTerminal():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+def printaLinha():
+    print("==============================")
+
 #carro de teste
 montadora = Montadora(str(1), "RS", "CHEVROLET")
 modelo = Modelo(str(1),"CORSA",montadora)
@@ -14,11 +17,12 @@ carro = Carro("IHF-25551", modelo, "1998")
 carrosCadastrados = []
 
 carrosCadastrados.append(carro)
+limpaTerminal()
 
 while (True):
-    print("==============================")
+    printaLinha()
     print("       Sistema de carro")
-    print("==============================")
+    printaLinha()
 
     opcaoValida = False
 
@@ -33,15 +37,15 @@ while (True):
 
         if (opcao not in [1,2,3,4]):
             limpaTerminal()
-            print("!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+            printaLinha()
             print("     Opção inválida")
-            print("!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+            printaLinha()
         else:
             opcaoValida = True
         
     if opcao == 1:
         limpaTerminal()
-        print("==============================")
+        printaLinha()
         print("    Cadastro de carro:")
         carro = Carro()
         modelo = Modelo()
@@ -63,15 +67,15 @@ while (True):
         carrosCadastrados.append(carro)
         
         limpaTerminal()
-        print("==============================")
+        printaLinha()
         print("Carro cadastrado com sucesso.")
 
 
     if opcao == 2:
         limpaTerminal()
-        print("==============================")
+        printaLinha()
         print("  Listando todos os carros")
-        print("==============================")
+        printaLinha()
         
         print(len(carrosCadastrados))
 
@@ -80,14 +84,99 @@ while (True):
             print("Modelo:" + carro.modelo.nome + "(cód. " + carro.modelo.codigo + ")")
             print("Ano de fabricação: " + carro.anoFabricacao)
             print("Placa: " + carro.placa)
-            print("==============================")        
+            printaLinha()
 
     if opcao == 3:
-        '''TO-DO: IMPLEMENTAR AQUI A EDIÇÃO DE CARRO. PARA ISSO, O ID VAI TER QUE SER ÚNICO DENTRO DO ARRAY DE VEÍCULOS E VAI TER
-        QUE SER FEITA UMA BUSCA PELO ID NO ARRAY. APÓS ISSO, PERGUNTAR QUAL ATRIBUTO QUER EDITAR. '''
+        opcaoValidaEdicao = False
+        opcaoValidaEdicaoMontadora = False
+        opcaoValidaEdicaoModelo = False
+        opcaoValidaEdicaoCarro = False
 
+        placaCarroEditar = input("Insira a placa do carro que você quer editar: ")
+
+        carroEditar = ""
+
+        for carro in carrosCadastrados:
+            if carro.placa == placaCarroEditar:
+                carroEditar = carro
+
+        limpaTerminal()
+
+        if carroEditar == "":
+            printaLinha()
+            print("Carro não encontrado. Digite exatamente igual a placa listada na opção de listar veículo.")
+            printaLinha()
+        
+        else: 
+            while not opcaoValidaEdicao:
+                printaLinha()
+                print("Escolha a opção que quer editar:")
+                print("1 - Montadora")
+                print("2 - Modelo")
+                print("3 - Carro")
+                opcaoEdicao = int(input("Insira sua opção: "))
+                
+                if opcaoEdicao not in [1,2,3]:
+                    print("Opção inválida.")
+                else: 
+                    opcaoValidaEdicao = True
+            
+            if opcaoEdicao == 1:
+                while not opcaoValidaEdicaoMontadora:
+                    print("Escolha o que quer editar na montadora:")
+                    print("1 - Código")
+                    print("2 - Estado")
+                    print("3 - RazaoSocial")
+                    opcaoEdicaoMontadora = int(input("Insira sua opção: "))
+
+                    if opcaoEdicaoMontadora not in [1,2,3]:
+                        print("Opção inválida.")
+                    else: 
+                        opcaoValidaEdicaoMontadora = True       
+
+                if opcaoEdicaoMontadora == 1:
+                    carroEditar.modelo.montadora.codigo = input("Insira o novo código da montadora: ")
+
+                if opcaoEdicaoMontadora == 2:
+                    carroEditar.modelo.montadora.estado = input("Insira o estado da montadora: ")
+                
+                if opcaoEdicaoMontadora == 3:
+                    carroEditar.modelo.montadora.razaoSocial = input("Insira a razão social da montadora: ")
+
+            if opcaoEdicao == 2:
+                while not opcaoValidaEdicaoModelo: 
+                    print("insira uma opção: ")
+                    print("1 - Codigo")
+                    print("2 - Nome")
+
+                    opcaoEdicaoModelo = int(input())
+
+                    if opcaoEdicaoModelo not in [1,2]:
+                        print("opção invalida")
+                    else: 
+                        opcaoValidaEdicaoModelo = True 
+                
+                if opcaoEdicaoModelo == 1:
+                    carroEditar.modelo.codigo = input("Insira o novo código do modelo: ")
+                if opcaoEdicaoModelo == 2:
+                    carroEditar.modelo.nome = input("Insira o novo nome do modelo: ")
+
+            if opcaoEdicao == 3:
+                while not opcaoValidaEdicaoCarro:
+                    print("Insira uma opção: ")
+                    print("1 - Placa")
+                    print("2 - Ano de fabricação")
+                    opcaoEdicaoCarro = int(input())
+                
+                    if opcaoEdicaoCarro not in [1,2]:
+                        print("Opção inválida")
+                    else:
+                        opcaoValidaEdicaoCarro = True
+                
+                if opcaoEdicaoCarro == 1:
+                    carroEditar.placa = input("Insira a nova placa: ")
+                if opcaoEdicaoCarro == 2:
+                    carroEditar.anoFabricacao = input("Insira o novo ano de fabricação: ")                    
 
     if opcao == 4:
         exit()
-
-
