@@ -10,4 +10,4 @@ app.use(bodyParser.json())
 
 useRoutes(app);
 
-app.listen(PORT, () => console.log("Server initialized."));
+app.listen(PORT, () => console.log("Api criada por Vinícius Finger e Bruno Moretto."));
