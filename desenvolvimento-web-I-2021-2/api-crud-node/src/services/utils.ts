@@ -11,3 +11,7 @@ export const internalServerError = (res: Response, err: Error) => {
         err: err.message
     })
 }
+
+export const objectNotFound = (res: Response) => {
+    res.sendStatus(204);
+}

@@ -1,13 +1,9 @@
 import sqlite3 from 'sqlite3';
 
-const DATABASE_FILE = process.env.DATABASE_FILE;
-if (!DATABASE_FILE){
-    throw new Error("CAMINHO PARA O BANCO DE DADOS SQLITE NÃO INFORMADO.");
-}
+const DATABASE_FILE = './data.db';
 
 export const openConnection = () => {
-    let db = new sqlite3.Database(DATABASE_FILE);
-    return db;
+    return new sqlite3.Database(DATABASE_FILE);
 }
 
 export const executeQuery = (query : string, params?: any[]) => {
