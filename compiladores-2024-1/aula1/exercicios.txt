@@ -1,0 +1,7 @@
+1. Implemente uma lista encadeada em Python
+2. Implemente uma árvore binária de pesquisa em Python
+3. Implemente uma função que verifique se um grafo é ou não conectado em Python
+4. Implemente um programa em Python que abra um arquivo texto e crie um histograma das palavras existentes no texto, ignorando pontuações, números de capítulos, etc. Você pode testar o programa no livro Dom Casmurro
+
+Quão eficiente é o seu programa em relação ao tempo de processamento?
+Quão eficiente é o seu programa em relação ao uso de memória?
