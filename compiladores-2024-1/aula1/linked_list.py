@@ -30,6 +30,22 @@ class LinkedList:
         
         return actual_node
 
+    def remove(self, data):
+        if self.head.data == data:
+            self.head = self.head.next
+        else:
+            before_node = None
+            actual_node = self.head
+
+            while actual_node and actual_node.data != data:
+                before_node = actual_node
+                actual_node = actual_node.next
+            
+            if actual_node:
+                before_node.next = actual_node.next
+            else:
+                before_node.next = None
+
 # Testing the list:
 list = LinkedList()
 for i in range(8):
