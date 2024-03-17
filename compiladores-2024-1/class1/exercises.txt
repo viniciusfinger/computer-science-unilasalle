@@ -1,0 +1,7 @@
+1. Implement a linked list in Python
+2. Implement a binary search tree in Python
+3. Implement a function that checks whether a graph is connected or not in Python
+4. Implement a program in Python that opens a text file and creates a histogram of the words existing in the text, ignoring punctuation, chapter numbers, etc. You can test the program on the book "Dom Casmurro".
+
+How efficient is your program in terms of processing time?
+How efficient is your program in terms of memory usage?
