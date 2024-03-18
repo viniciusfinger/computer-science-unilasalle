@@ -34,10 +34,21 @@ class BinarySearchTree:
     def contains(self, data):
         pass
 
-    def get_min(self):
-        pass
+    def get_min(self) -> int:
+        if self.trunk is None:
+            raise ValueError("The tree is empty.")
+        
+        if self.trunk.left_node is None:
+            return self.trunk.data
+    
+        actual_node = self.trunk
 
-    def get_max(self):
+        while actual_node.left_node != None:
+            actual_node = actual_node.left_node
+        
+        return actual_node.data
+
+    def get_max(self) -> int:
         if self.trunk is None:
             raise ValueError("The tree is empty.")
         
@@ -73,11 +84,10 @@ class BinarySearchTree:
             self._print_inorder(node.right_node)
 
 ## testing 
-intList = [10, 20, 5, 2, 40, 60]
+numbers_to_add = [10, 20, 5, 2, 40, 60]
 bst = BinarySearchTree()
 
-for num in intList:
-    bst.add(num)
+for number in numbers_to_add:
+    bst.add(number)
 
 bst.print_tree()
-bst.get_max()
