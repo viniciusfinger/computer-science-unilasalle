@@ -28,6 +28,26 @@ class BinarySearchTree:
         else:
             raise ValueError("Duplicated value found in tree.")
     
+    def remove(self, data):
+        pass
+    
+    def contains(self, data):
+        pass
+
+    def get_min(self):
+        pass
+
+    def get_max(self):
+        pass
+
+    def size(self):
+        # return total nodes
+        pass
+
+    def height(self):
+        # return the height of the tree
+        pass    
+
     def print_tree(self):
         if self.trunk is None:
             print("Tree is empty")
