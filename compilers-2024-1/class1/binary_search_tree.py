@@ -27,4 +27,24 @@ class BinarySearchTree:
                 self._add_recursive(data, current_node.right_node)
         else:
             raise ValueError("Duplicated value found in tree.")
+    
+    def print_tree(self):
+        if self.trunk is None:
+            print("Tree is empty")
+        else:
+            self._print_inorder(self.trunk)
 
+    def _print_inorder(self, node):
+        if node is not None:
+            self._print_inorder(node.left_node)
+            print(node.data, end=" ")
+            self._print_inorder(node.right_node)
+
+## testing 
+intList = [10, 20, 5, 2, 40, 60]
+bst = BinarySearchTree()
+
+for num in intList:
+    bst.add(num)
+
+bst.print_tree()
