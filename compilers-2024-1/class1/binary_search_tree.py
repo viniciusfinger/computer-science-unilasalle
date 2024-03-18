@@ -31,8 +31,18 @@ class BinarySearchTree:
     def remove(self, data):
         pass
     
-    def contains(self, data):
-        pass
+    def contains(self, data) -> bool:
+        if self.trunk is not None and self.trunk.data == data: return True
+        
+        current_node = self.trunk
+
+        while current_node.left_node is not None or current_node.right_node is not None and current_node.data != data:            
+            if data > current_node.data:
+                current_node = current_node.right_node
+            else:
+                current_node = current_node.left_node
+        
+        return current_node.data == data
 
     def get_min(self) -> int:
         if self.trunk is None:
@@ -91,3 +101,4 @@ for number in numbers_to_add:
     bst.add(number)
 
 bst.print_tree()
+print(bst.contains(40))
