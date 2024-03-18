@@ -38,7 +38,19 @@ class BinarySearchTree:
         pass
 
     def get_max(self):
-        pass
+        if self.trunk is None:
+            raise ValueError("The tree is empty.")
+        
+        if self.trunk.right_node is None:
+            return self.trunk.data
+        
+        actual_node = self.trunk
+
+        while actual_node.right_node != None:
+            actual_node = actual_node.right_node
+        
+        return actual_node.data
+        
 
     def size(self):
         # return total nodes
@@ -68,3 +80,4 @@ for num in intList:
     bst.add(num)
 
 bst.print_tree()
+bst.get_max()
