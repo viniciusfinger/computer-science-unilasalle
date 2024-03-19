@@ -31,20 +31,49 @@ class BinarySearchTree:
     def remove(self, data):
         if self.trunk is None:
             raise ValueError("Tree is empty.")
+
+        self.trunk = self._remove_recursive(self.trunk, data)
+        
+    def _remove_recursive(self, current_node, data):
+        if current_node is None:
+            return current_node
+
+        if data < current_node.data:
+            current_node.left_node = self._remove_recursive(current_node.left_node, data)
+        elif data > current_node.data:
+            current_node.right_node = self._remove_recursive(current_node.right_node, data)
+        else:
+            if current_node.left_node is None and current_node.right_node is None:
+                current_node = None
+            elif current_node.left_node is None:
+                current_node = current_node.right_node
+            elif current_node.right_node is None:
+                current_node = current_node.left_node
+            else:
+                successor_node = self._find_min(current_node.right_node)
+                current_node.data = successor_node.data
+                current_node.right_node = self._remove_recursive(current_node.right_node, successor_node.data)
+
+        return current_node
+
+    def _find_min(self, node):
+        while node.left_node is not None:
+            node = node.left_node
+        return node
     
     def contains(self, data) -> bool:
-        if self.trunk is not None and self.trunk.data == data: return True
+        if self.trunk is not None and self.trunk.data is data: return True
         
         current_node = self.trunk
 
         #to-do: make this function recursive
-        while current_node.left_node is not None or current_node.right_node is not None and current_node.data != data:            
+        while current_node.left_node is not None or current_node.right_node is not None and current_node.data is not data:            
             if data > current_node.data:
                 current_node = current_node.right_node
             else:
                 current_node = current_node.left_node
         
-        return current_node.data == data
+        return current_node.data is data
 
     def get_min(self) -> int:
         if self.trunk is None:
@@ -55,7 +84,7 @@ class BinarySearchTree:
     
         actual_node = self.trunk
 
-        while actual_node.left_node != None:
+        while actual_node.left_node is not None:
             actual_node = actual_node.left_node
         
         return actual_node.data
@@ -69,7 +98,7 @@ class BinarySearchTree:
         
         actual_node = self.trunk
 
-        while actual_node.right_node != None:
+        while actual_node.right_node is not None:
             actual_node = actual_node.right_node
         
         return actual_node.data
