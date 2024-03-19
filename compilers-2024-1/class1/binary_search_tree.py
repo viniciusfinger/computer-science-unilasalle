@@ -29,13 +29,15 @@ class BinarySearchTree:
             raise ValueError("Duplicated value found in tree.")
     
     def remove(self, data):
-        pass
+        if self.trunk is None:
+            raise ValueError("Tree is empty.")
     
     def contains(self, data) -> bool:
         if self.trunk is not None and self.trunk.data == data: return True
         
         current_node = self.trunk
 
+        #to-do: make this function recursive
         while current_node.left_node is not None or current_node.right_node is not None and current_node.data != data:            
             if data > current_node.data:
                 current_node = current_node.right_node
