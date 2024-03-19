@@ -132,4 +132,3 @@ for number in numbers_to_add:
     bst.add(number)
 
 bst.print_tree()
-print(bst.contains(40))
