@@ -1,12 +1,17 @@
 import re
 
-file = open("casmurro.txt", 'r')
+file_name = "casmurro.txt"
+file = open(file_name, 'r')
 
 def clean_word(word):
     return re.sub(r'[^\w\s]', '', word).lower()
 
-def order_dict(d):
-    return dict(sorted(d.items(), key=lambda item: item[1]))
+def order_dict(dictionary):
+    return dict(sorted(dictionary.items(), key=lambda item: item[1]))
+
+def print_dict(dictionary):
+    for word, count in dictionary.items():
+        print(f"{word}: {count}")
 
 words_count = {}
 
@@ -17,5 +22,4 @@ for line in file:
 
 words_count = order_dict(words_count)
 
-for word, count in words_count.items():
-    print(f"{word}: {count}")
+print_dict(words_count)
